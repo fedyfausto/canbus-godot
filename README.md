@@ -143,15 +143,15 @@ with the parameters from the matrix.
 
 As a result of this step, the binaries will be built in the `bin` folder (as specified in the SConstruct file). After all builds are completed, all individual builds will be merged into one common GDExtension-all zip that you can download.
 
-Note: for macos, you will have to build the binary as a `.dylib` in a `EXTENSION-NAME.framework` folder. The framework folder should also have a `Resources` folder with a file called `Info.plist`. Without this file, signing will fail.
+Note: for macos, you will have to build the binary as a `.dylib` in a `canbus-godot.framework` folder. The framework folder should also have a `Resources` folder with a file called `Info.plist`. Without this file, signing will fail.
 
 Note: for iOS, the same should be as for MacOS, however the `Info.plist` file needs to be close to the `.dylib`, instead of in a `Resources` folder (If this is not done, the build will fail to upload to the App Store).
 
 So, in our case, the builds should be:
 
 ```sh
-bin/EXTENSION-NAME.macos.template_debug.framework/EXTENSION-NAME.macos.template_release
-bin/EXTENSION-NAME.ios.template_debug.framework/EXTENSION-NAME.ios.template_release.arm64.dylib
+bin/canbus-godot.macos.template_debug.framework/canbus-godot.macos.template_release
+bin/canbus-godot.ios.template_debug.framework/canbus-godot.ios.template_release.arm64.dylib
 
 Afterwards, you want to set in the `.gdextension` file the paths to the `.framework` folder, instead of the `.dylib` file (Note that for the `.dylib` binary, the extension is not needed, you could have a file without any extension and it would still work).
 

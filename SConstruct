@@ -14,7 +14,7 @@ def validate_parent_dir(key, val, env):
         raise UserError("'%s' is not a directory: %s" % (key, os.path.dirname(val)))
 
 
-libname = "EXTENSION-NAME"
+libname = "canbus"
 projectdir = "demo"
 
 localEnv = Environment(tools=["default"], PLATFORM="")
@@ -38,6 +38,9 @@ opts.Add(
         validator=validate_parent_dir,
     )
 )
+opts.Add("CXX", "C++ compiler binary")
+opts.Add("CC", "C compiler binary")
+
 opts.Update(localEnv)
 
 Help(opts.GenerateHelpText(localEnv))
